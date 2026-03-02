@@ -11,6 +11,7 @@
 <p align="center">
   <a href="https://reactbits.dev"><img src="https://img.shields.io/badge/React_Bits-117+_Components-blue?style=for-the-badge&logo=react" alt="Components"></a>
   <a href="#-多ai工具支持"><img src="https://img.shields.io/badge/AI_Tools-Claude%20%7C%20OpenCode%20%7C%20Gemini%20%7C%20Copilot-green?style=for-the-badge" alt="AI Tools"></a>
+  <a href="#"><img src="https://img.shields.io/badge/AI_GenCode-95%25-brightgreen?style=for-the-badge&logo=openai" alt="AI GenCode 95%"></a>
   <a href="#"><img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License"></a>
 </p>
 
@@ -45,6 +46,7 @@
 ### 案例 1：AI 数字大屏
 
 **用户说：**
+
 ```
 生成一个公司的 AI 数字大屏，要求：
 - 深色科技感主题
@@ -56,14 +58,14 @@
 
 **AI 自动匹配：**
 
-| 区域 | 组件 | 效果 |
-|:---:|:---|:---|
-| 背景 | `Particles` + `GridScan` | 科技感粒子 + 网格扫描 |
-| 标题 | `DecryptedText` | 字符逐个解密显现 |
-| 数据卡片 | `SpotlightCard` | 鼠标跟随聚光灯效果 |
-| 核心指标 | `CountUp` | 数字从 0 递增动画 |
-| 活动列表 | `AnimatedList` | 列表项依次进场 |
-| 导航 | `Dock` | macOS 风格底部导航 |
+|   区域   | 组件                     | 效果                  |
+| :------: | :----------------------- | :-------------------- |
+|   背景   | `Particles` + `GridScan` | 科技感粒子 + 网格扫描 |
+|   标题   | `DecryptedText`          | 字符逐个解密显现      |
+| 数据卡片 | `SpotlightCard`          | 鼠标跟随聚光灯效果    |
+| 核心指标 | `CountUp`                | 数字从 0 递增动画     |
+| 活动列表 | `AnimatedList`           | 列表项依次进场        |
+|   导航   | `Dock`                   | macOS 风格底部导航    |
 
 ![AI 数字大屏演示](public/demo.gif)
 
@@ -71,11 +73,11 @@
 
 ### 案例 2：自然语言 vs 组件名
 
-| ❌ 传统方式（需要知道组件名） | ✅ 自然语言方式（本项目） |
-|:---|:---|
+| ❌ 传统方式（需要知道组件名）                         | ✅ 自然语言方式（本项目）                              |
+| :---------------------------------------------------- | :----------------------------------------------------- |
 | "用 Aurora 背景 + BlurText 标题 + SpotlightCard 卡片" | "帮我做个科技感落地页，极光背景，标题淡入，卡片有光效" |
-| "Dock 导航 + CountUp 数字" | "底部像 Mac 那样，数字要滚动" |
-| "FaultyTerminal + GlitchText" | "赛博朋克风格，故障风文字" |
+| "Dock 导航 + CountUp 数字"                            | "底部像 Mac 那样，数字要滚动"                          |
+| "FaultyTerminal + GlitchText"                         | "赛博朋克风格，故障风文字"                             |
 
 ---
 
@@ -84,17 +86,20 @@
 ### 1. 安装为 AI Skill
 
 **Claude Code**（已内置支持）
+
 ```bash
 # 放置在 skills 目录即可
 ~/.claude/skills/reactbits-ui-skills/
 ```
 
 **OpenCode**
+
 ```bash
 opcode skill add reactbits-ui-skills /path/to/reactbits-ui-skills
 ```
 
 **Gemini CLI**
+
 ```bash
 git clone https://github.com/lumacoder/reactbits-ui-skills.git \
   ~/.gemini/skills/reactbits-ui-skills
@@ -105,6 +110,7 @@ git clone https://github.com/lumacoder/reactbits-ui-skills.git \
 ### 2. 开始使用
 
 **方式一：完全自然语言**（推荐）
+
 ```
 用户：帮我做个 SaaS 产品落地页，科技感强，有动画效果
 
@@ -117,6 +123,7 @@ AI：
 ```
 
 **方式二：描述具体效果**
+
 ```
 用户：想要一个卡片，鼠标放上去有聚光灯跟着
 
@@ -140,18 +147,18 @@ React Bits Skills 覆盖 **4 大类、117+ 组件**：
 
 ### 🔥 高频组件 TOP 10
 
-| 排名 | 自然语言描述 | 组件名 | 典型场景 |
-|:---:|:---|:---|:---|
-| 1 | "极光/渐变背景" | `Aurora` | Hero 首屏背景 |
-| 2 | "文字模糊淡入" | `BlurText` | 大标题动效 |
-| 3 | "鼠标光效卡片" | `SpotlightCard` | 功能特性展示 |
-| 4 | "数字递增" | `CountUp` | 数据统计面板 |
-| 5 | "光泽文字" | `ShinyText` | CTA 按钮 |
-| 6 | "粒子背景" | `Particles` | 科技感页面 |
-| 7 | "解密动画" | `DecryptedText` | 科技/安全主题 |
-| 8 | "眩光悬停" | `GlareHover` | 卡片交互高亮 |
-| 9 | "Mac Dock 导航" | `Dock` | 底部导航栏 |
-| 10 | "滚动浮现" | `ScrollFloat` | 长页面标题 |
+| 排名 | 自然语言描述    | 组件名          | 典型场景      |
+| :--: | :-------------- | :-------------- | :------------ |
+|  1   | "极光/渐变背景" | `Aurora`        | Hero 首屏背景 |
+|  2   | "文字模糊淡入"  | `BlurText`      | 大标题动效    |
+|  3   | "鼠标光效卡片"  | `SpotlightCard` | 功能特性展示  |
+|  4   | "数字递增"      | `CountUp`       | 数据统计面板  |
+|  5   | "光泽文字"      | `ShinyText`     | CTA 按钮      |
+|  6   | "粒子背景"      | `Particles`     | 科技感页面    |
+|  7   | "解密动画"      | `DecryptedText` | 科技/安全主题 |
+|  8   | "眩光悬停"      | `GlareHover`    | 卡片交互高亮  |
+|  9   | "Mac Dock 导航" | `Dock`          | 底部导航栏    |
+|  10  | "滚动浮现"      | `ScrollFloat`   | 长页面标题    |
 
 ---
 
@@ -159,28 +166,28 @@ React Bits Skills 覆盖 **4 大类、117+ 组件**：
 
 ### 按效果描述
 
-| 你说 | AI 选择 | 说明 |
-|:---|:---|:---|
-| "极光背景" / "彩色渐变流动" | `Aurora` | 暗色渐变背景 |
-| "粒子效果" / "星空背景" | `Particles` | 科技感粒子系统 |
-| "文字一个个出来" | `SplitText` | 逐字分裂动画 |
-| "像解密一样显示" | `DecryptedText` | 科技风解密效果 |
-| "故障风格" | `GlitchText` | 赛博朋克故障 |
-| "光泽扫过" | `ShinyText` | CTA 文字动效 |
-| "数字从0开始涨" | `CountUp` | 统计数字动画 |
-| "鼠标放上去有光" | `SpotlightCard` | 聚光灯效果卡片 |
-| "3D倾斜卡片" | `TiltedCard` | 鼠标跟随倾斜 |
-| "Mac底部导航" | `Dock` | macOS 风格 Dock |
+| 你说                        | AI 选择         | 说明            |
+| :-------------------------- | :-------------- | :-------------- |
+| "极光背景" / "彩色渐变流动" | `Aurora`        | 暗色渐变背景    |
+| "粒子效果" / "星空背景"     | `Particles`     | 科技感粒子系统  |
+| "文字一个个出来"            | `SplitText`     | 逐字分裂动画    |
+| "像解密一样显示"            | `DecryptedText` | 科技风解密效果  |
+| "故障风格"                  | `GlitchText`    | 赛博朋克故障    |
+| "光泽扫过"                  | `ShinyText`     | CTA 文字动效    |
+| "数字从0开始涨"             | `CountUp`       | 统计数字动画    |
+| "鼠标放上去有光"            | `SpotlightCard` | 聚光灯效果卡片  |
+| "3D倾斜卡片"                | `TiltedCard`    | 鼠标跟随倾斜    |
+| "Mac底部导航"               | `Dock`          | macOS 风格 Dock |
 
 ### 按风格/主题
 
-| 风格 | 自动组合方案 |
-|:---|:---|
-| **科技感/SaaS** | Aurora + BlurText + SpotlightCard + Dock |
-| **数据大屏** | Particles + DecryptedText + CountUp + AnimatedList |
-| **赛博朋克** | FaultyTerminal + GlitchText + PixelCard + LaserFlow |
-| **极简优雅** | Silk + ScrollReveal + GlassSurface + FadeContent |
-| **复古游戏** | PixelBlast + ASCIIText + PixelCard + ClickSpark |
+| 风格            | 自动组合方案                                        |
+| :-------------- | :-------------------------------------------------- |
+| **科技感/SaaS** | Aurora + BlurText + SpotlightCard + Dock            |
+| **数据大屏**    | Particles + DecryptedText + CountUp + AnimatedList  |
+| **赛博朋克**    | FaultyTerminal + GlitchText + PixelCard + LaserFlow |
+| **极简优雅**    | Silk + ScrollReveal + GlassSurface + FadeContent    |
+| **复古游戏**    | PixelBlast + ASCIIText + PixelCard + ClickSpark     |
 
 ---
 
@@ -212,6 +219,7 @@ reactbits-ui-skills/
 ## 🛠️ 多 AI 工具支持
 
 ### Claude Code
+
 ```bash
 # 克隆到 skills 目录
 git clone https://github.com/lumacoder/reactbits-ui-skills.git \
@@ -219,6 +227,7 @@ git clone https://github.com/lumacoder/reactbits-ui-skills.git \
 ```
 
 ### OpenCode
+
 ```bash
 # 添加 skill
 opcode skill add reactbits-ui-skills /path/to/reactbits-ui-skills
@@ -229,6 +238,7 @@ opcode skill add reactbits-ui-skills \
 ```
 
 ### Gemini CLI
+
 ```bash
 # 克隆到 gemini skills 目录
 git clone https://github.com/lumacoder/reactbits-ui-skills.git \
@@ -241,11 +251,14 @@ git clone https://github.com/lumacoder/reactbits-ui-skills.git \
 ```
 
 ### GitHub Copilot
+
 1. VS Code → Settings → 搜索 "Copilot Instructions"
 2. 添加 `SKILL.md` 的路径到自定义指令
 
 ### Cursor
+
 在项目根目录创建 `.cursor/rules/reactbits.mdc`：
+
 ```markdown
 ---
 name: React Bits
@@ -257,18 +270,19 @@ description: React Bits UI 组件框架专家
 ```
 
 ### Windsurf / Cline / 其他
+
 将 `SKILL.md` 内容添加到自定义系统提示词中即可。
 
 ---
 
 ## 📚 文档导航
 
-| 文档 | 内容 |
-|:---|:---|
-| [SKILL.md](SKILL.md) | AI 核心技能定义，包含完整组件索引和代码模板 |
-| [自然语言指南](resources/natural-language-guide.md) | 如何用自然语言描述需求，常用关键词对照表 |
-| [快速上手](resources/quick-start.md) | 1 分钟快速开始，核心组件速查 |
-| [组件目录](resources/component-catalog.md) | 117+ 组件完整列表，含 Props 说明 |
+| 文档                                                | 内容                                        |
+| :-------------------------------------------------- | :------------------------------------------ |
+| [SKILL.md](SKILL.md)                                | AI 核心技能定义，包含完整组件索引和代码模板 |
+| [自然语言指南](resources/natural-language-guide.md) | 如何用自然语言描述需求，常用关键词对照表    |
+| [快速上手](resources/quick-start.md)                | 1 分钟快速开始，核心组件速查                |
+| [组件目录](resources/component-catalog.md)          | 117+ 组件完整列表，含 Props 说明            |
 
 ---
 
@@ -304,6 +318,7 @@ npx serve test
 ```
 
 功能：
+
 - 🧪 测试自然语言理解能力
 - 📋 复制测试 Prompts 到 Antigravity
 - 🔍 查看组件映射速查表
@@ -312,18 +327,21 @@ npx serve test
 ## 💡 使用技巧
 
 ### 1. 描述效果，而非组件名
+
 ```
 ✅ "鼠标放上去有聚光灯效果"
 ❌ "用 SpotlightCard"
 ```
 
 ### 2. 描述风格，让 AI 组合
+
 ```
 ✅ "赛博朋克风格的数据大屏"
 ❌ "用 FaultyTerminal + GlitchText + CountUp"
 ```
 
 ### 3. 混合使用也可以
+
 ```
 ✅ "想要极光背景（Aurora），标题用模糊淡入效果"
 ```

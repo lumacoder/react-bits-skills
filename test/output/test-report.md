@@ -1,6 +1,6 @@
 # React Bits UI Skill 测试报告
 
-生成时间: 2026/3/2 12:33:25
+生成时间: 2026/3/2 13:04:25
 
 ## 测试摘要
 
@@ -29,7 +29,8 @@
     │   ├── cyberpunk-hero.tsx
     │   ├── feature-cards.tsx
     │   ├── hero-section.tsx
-    │   └── test-prompts.md
+    │   ├── test-prompts.md
+    │   └── test-report.md
     └── test-skill.js
 
 
