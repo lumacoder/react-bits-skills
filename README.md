@@ -2,49 +2,49 @@
   <img src="public/logo.png" alt="React Bits Logo" width="80" />
 </p>
 
-<h1 align="center">🎨 React Bits Skills</h1>
+<h1 align="center">React Bits Skills</h1>
 
 <p align="center">
-  <strong>让 AI 生成的前端不再丑陋 — 基于 React Bits 框架的 AI UI 生成能力库</strong>
+  <strong>让 AI 生成的前端不再丑陋 — 自然语言驱动的高品质 UI 生成</strong>
 </p>
 
 <p align="center">
   <a href="https://reactbits.dev"><img src="https://img.shields.io/badge/React_Bits-117+_Components-blue?style=for-the-badge&logo=react" alt="Components"></a>
-  <a href="https://github.com/DavidHDev/react-bits"><img src="https://img.shields.io/badge/GitHub-15k+_Stars-yellow?style=for-the-badge&logo=github" alt="Stars"></a>
-  <a href="#"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License"></a>
+  <a href="#-多ai工具支持"><img src="https://img.shields.io/badge/AI_Tools-Claude%20%7C%20OpenCode%20%7C%20Gemini%20%7C%20Copilot-green?style=for-the-badge" alt="AI Tools"></a>
+  <a href="#"><img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License"></a>
 </p>
 
 ---
 
 ## 🤔 这个项目解决什么问题？
 
-> **前端工程师的焦虑：AI 生成的页面为什么总是那么丑？**
+> **痛点：用户不知道组件名，只会用自然语言描述需求**
 
-你是否遇到过这些场景：
+传统 Skill 要求用户知道准确的组件名称（如 "用 Aurora 做背景"），但现实中用户只会说：
 
-- 🎭 让 AI 生成一个落地页，结果拿到的是 **2015 年审美的 Bootstrap 风格**
-- 😩 想要一个科技感大屏，AI 给你的却是 **毫无动效的静态表格**
-- 🔄 反复 prompt 调整，**耗费大量时间**却始终达不到设计师水准
-- 💀 客户看到 AI 生成的 demo，直接说 **"这不行"**
+- "想要极光渐变效果" → 应该是 `Aurora`
+- "鼠标放上去有光跟着" → 应该是 `SpotlightCard`
+- "数字从 0 开始滚动" → 应该是 `CountUp`
+- "像 Mac 那样的底部导航" → 应该是 `Dock`
 
-**React Bits Skills 的核心使命：** 让 AI 真正理解现代前端动效组件库，**从根本上解决 AI 生成 UI "太丑" 的问题**。
+**React Bits Skills 的核心创新：**
 
-通过将 [React Bits](https://reactbits.dev) 框架的 **117+ 精品动效组件** 编码为 AI 可理解的技能知识，使 AI 能够：
+```
+自然语言描述 → AI 意图识别 → 自动组件匹配 → 生产级代码
+```
 
-1. **精准选择组件** — 根据用户描述自动匹配最合适的动效组件
-2. **正确组合搭配** — 背景 + 文字动画 + 交互组件的黄金组合
-3. **输出生产级代码** — 可直接复制使用的完整 TSX 代码
+1. **自然语言理解** — 用户用日常语言描述需求，无需知道组件名
+2. **智能组件匹配** — AI 自动解析意图，选择最佳组件组合
+3. **多工具支持** — Claude Code、OpenCode、Gemini CLI、GitHub Copilot、Cursor
+4. **生产级输出** — 直接可用的 TSX 代码，无需二次调整
 
 ---
 
-## 🖥️ 案例演示：AI 数字大屏
+## 🖥️ 案例演示
 
-> 仅通过一句话描述，AI 即可生成一个专业级公司数字大屏界面：
+### 案例 1：AI 数字大屏
 
-![AI 数字大屏演示 — 由 React Bits Skills 驱动，一句话生成企业级科技感数据可视化大屏](public/demo.gif)
-
-**Prompt 示例：**
-
+**用户说：**
 ```
 生成一个公司的 AI 数字大屏，要求：
 - 深色科技感主题
@@ -54,116 +54,279 @@
 - 底部粒子效果背景
 ```
 
-**AI 自动选择的 React Bits 组件：**
+**AI 自动匹配：**
 
-|   区域   |          组件          |         效果          |
-| :------: | :--------------------: | :-------------------: |
-|   背景   | `Particles` + `Aurora` | 科技感粒子 + 极光渐变 |
-|   标题   |    `DecryptedText`     |   字符逐个解密显现    |
-| 数据卡片 |    `SpotlightCard`     |  鼠标跟随聚光灯效果   |
-| 核心指标 |       `CountUp`        |   数字从 0 递增动画   |
-|   列表   |     `AnimatedList`     |    列表项依次进场     |
-|   导航   |         `Dock`         |  macOS 风格底部导航   |
+| 区域 | 组件 | 效果 |
+|:---:|:---|:---|
+| 背景 | `Particles` + `GridScan` | 科技感粒子 + 网格扫描 |
+| 标题 | `DecryptedText` | 字符逐个解密显现 |
+| 数据卡片 | `SpotlightCard` | 鼠标跟随聚光灯效果 |
+| 核心指标 | `CountUp` | 数字从 0 递增动画 |
+| 活动列表 | `AnimatedList` | 列表项依次进场 |
+| 导航 | `Dock` | macOS 风格底部导航 |
+
+![AI 数字大屏演示](public/demo.gif)
 
 ---
 
-## 🧩 组件能力覆盖
+### 案例 2：自然语言 vs 组件名
 
-React Bits Skills 覆盖 **4 大类、117+ 组件**，完整映射 React Bits 生态：
-
-```
-📦 react-bits-skills
-├── 💬 TextAnimations（25 个） — 文字动画：模糊、解密、故障、渐变、打字机...
-├── 🌀 Animations（30 个）    — 交互动效：流体光标、磁吸、像素转场、丝带...
-├── 🧩 Components（35 个）    — UI 组件：聚光灯卡片、3D 画廊、瀑布流、Dock...
-└── 🖼️ Backgrounds（37 个）   — 动态背景：极光、粒子、星系、液态铬、闪电...
-```
-
-### 🔥 高频使用组件 TOP 10
-
-| 排名 | 组件            | 一句话描述      | 典型场景      |
-| :--: | :-------------- | :-------------- | :------------ |
-|  1   | `Aurora`        | 极光背景        | Hero 首屏背景 |
-|  2   | `BlurText`      | 文字模糊淡入    | 大标题动效    |
-|  3   | `SpotlightCard` | 聚光灯卡片      | 功能特性展示  |
-|  4   | `CountUp`       | 数字递增        | 数据统计面板  |
-|  5   | `ShinyText`     | 光泽滑过文字    | CTA 按钮      |
-|  6   | `Particles`     | 粒子背景        | 科技感页面    |
-|  7   | `DecryptedText` | 解密效果        | 科技/安全主题 |
-|  8   | `GlareHover`    | 眩光悬停        | 卡片交互高亮  |
-|  9   | `Dock`          | macOS Dock 导航 | 底部导航栏    |
-|  10  | `ScrollFloat`   | 滚动浮动        | 长页面标题    |
+| ❌ 传统方式（需要知道组件名） | ✅ 自然语言方式（本项目） |
+|:---|:---|
+| "用 Aurora 背景 + BlurText 标题 + SpotlightCard 卡片" | "帮我做个科技感落地页，极光背景，标题淡入，卡片有光效" |
+| "Dock 导航 + CountUp 数字" | "底部像 Mac 那样，数字要滚动" |
+| "FaultyTerminal + GlitchText" | "赛博朋克风格，故障风文字" |
 
 ---
 
 ## 🚀 快速上手
 
-### 1. 作为 AI Skill 使用
+### 1. 安装为 AI Skill
 
-将本项目配置为你的 AI 编码助手的 Skill，AI 即可在开发前端页面时**自动调用 React Bits 组件**：
-
+**Claude Code**（已内置支持）
 ```bash
-# 克隆到你的 skills 目录
-git clone https://github.com/lumacoder/react-bits-skills.git
+# 放置在 skills 目录即可
+~/.claude/skills/reactbits-ui-skills/
 ```
 
-### 2. 触发词
+**OpenCode**
+```bash
+opcode skill add reactbits-ui-skills /path/to/reactbits-ui-skills
+```
 
-在与 AI 对话时，使用以下关键词即可激活本 Skill：
+**Gemini CLI**
+```bash
+git clone https://github.com/lumacoder/reactbits-ui-skills.git \
+  ~/.gemini/skills/reactbits-ui-skills
+```
 
-| 触发词                            | 说明               |
-| :-------------------------------- | :----------------- |
-| `react-bits` / `reactbits`        | 直接调用框架       |
-| `动效组件` / `animated component` | 需要动画效果的组件 |
-| `落地页` / `landing page`         | 生成完整页面场景   |
-| `hero section`                    | 首屏区域           |
-| `前端页面开发`                    | 通用前端开发请求   |
-| `数字大屏` / `数据可视化`         | 数据展示场景       |
+**更多工具配置** → [查看完整指南](#-多ai工具支持)
 
-### 3. 使用示例
+### 2. 开始使用
+
+**方式一：完全自然语言**（推荐）
+```
+用户：帮我做个 SaaS 产品落地页，科技感强，有动画效果
+
+AI：
+✅ 背景 → Aurora 极光渐变
+✅ 标题 → BlurText 模糊淡入
+✅ 功能卡 → SpotlightCard 聚光灯
+✅ 数据统计 → CountUp 数字递增
+✅ 导航 → Dock macOS 风格
+```
+
+**方式二：描述具体效果**
+```
+用户：想要一个卡片，鼠标放上去有聚光灯跟着
+
+AI：推荐使用 SpotlightCard，效果如下：
+[代码示例]
+```
+
+---
+
+## 🧩 组件能力
+
+React Bits Skills 覆盖 **4 大类、117+ 组件**：
 
 ```
-用户：帮我生成一个 SaaS 产品的落地页，要求科技感强，有动画效果
-
-AI（激活 React Bits Skills 后）：
-  ✅ 背景 → Aurora 极光 + Particles 粒子
-  ✅ 标题 → BlurText 模糊淡入 + SplitText 逐字分裂
-  ✅ 功能卡 → SpotlightCard 聚光灯 + CountUp 数据统计
-  ✅ 价格 → GlareHover 眩光 + StarBorder 推荐标记
-  ✅ CTA → ShinyText 光泽按钮
-  ✅ 导航 → Dock macOS 风格
+📦 react-bits-skills
+├── 💬 TextAnimations（23个）— 文字动画
+├── 🌀 Animations（28个）   — 交互动效
+├── 🧩 Components（35个）   — UI 组件
+└── 🖼️ Backgrounds（36个）  — 动态背景
 ```
+
+### 🔥 高频组件 TOP 10
+
+| 排名 | 自然语言描述 | 组件名 | 典型场景 |
+|:---:|:---|:---|:---|
+| 1 | "极光/渐变背景" | `Aurora` | Hero 首屏背景 |
+| 2 | "文字模糊淡入" | `BlurText` | 大标题动效 |
+| 3 | "鼠标光效卡片" | `SpotlightCard` | 功能特性展示 |
+| 4 | "数字递增" | `CountUp` | 数据统计面板 |
+| 5 | "光泽文字" | `ShinyText` | CTA 按钮 |
+| 6 | "粒子背景" | `Particles` | 科技感页面 |
+| 7 | "解密动画" | `DecryptedText` | 科技/安全主题 |
+| 8 | "眩光悬停" | `GlareHover` | 卡片交互高亮 |
+| 9 | "Mac Dock 导航" | `Dock` | 底部导航栏 |
+| 10 | "滚动浮现" | `ScrollFloat` | 长页面标题 |
+
+---
+
+## 🎯 自然语言→组件映射
+
+### 按效果描述
+
+| 你说 | AI 选择 | 说明 |
+|:---|:---|:---|
+| "极光背景" / "彩色渐变流动" | `Aurora` | 暗色渐变背景 |
+| "粒子效果" / "星空背景" | `Particles` | 科技感粒子系统 |
+| "文字一个个出来" | `SplitText` | 逐字分裂动画 |
+| "像解密一样显示" | `DecryptedText` | 科技风解密效果 |
+| "故障风格" | `GlitchText` | 赛博朋克故障 |
+| "光泽扫过" | `ShinyText` | CTA 文字动效 |
+| "数字从0开始涨" | `CountUp` | 统计数字动画 |
+| "鼠标放上去有光" | `SpotlightCard` | 聚光灯效果卡片 |
+| "3D倾斜卡片" | `TiltedCard` | 鼠标跟随倾斜 |
+| "Mac底部导航" | `Dock` | macOS 风格 Dock |
+
+### 按风格/主题
+
+| 风格 | 自动组合方案 |
+|:---|:---|
+| **科技感/SaaS** | Aurora + BlurText + SpotlightCard + Dock |
+| **数据大屏** | Particles + DecryptedText + CountUp + AnimatedList |
+| **赛博朋克** | FaultyTerminal + GlitchText + PixelCard + LaserFlow |
+| **极简优雅** | Silk + ScrollReveal + GlassSurface + FadeContent |
+| **复古游戏** | PixelBlast + ASCIIText + PixelCard + ClickSpark |
 
 ---
 
 ## 📁 项目结构
 
 ```
-react-bits-skills/
-├── SKILL.md                       # 核心 Skill 定义（AI 读取此文件）
-├── README.md                      # 项目说明
-├── public/
-│   └── demo.gif                   # 演示动图
+reactbits-ui-skills/
+├── SKILL.md                              # 🎯 AI 核心技能定义
+├── README.md                             # 项目说明
+├── resources/
+│   ├── component-catalog.md              # 完整组件目录
+│   ├── natural-language-guide.md         # 自然语言使用指南
+│   ├── quick-start.md                    # 快速上手指南
+│   └── antigravity-guide.md              # Antigravity 专用指南
 ├── examples/
-│   └── landing-page.tsx           # 完整落地页示例代码
-└── resources/
-    └── component-catalog.md       # 组件详细目录
+│   ├── landing-page.tsx                  # SaaS 落地页示例
+│   ├── dashboard.tsx                     # 数据大屏示例
+│   └── portfolio.tsx                     # 作品集示例
+├── test/
+│   ├── test-skill.js                     # 自动化测试脚本
+│   ├── interactive-test.html             # 交互式测试工具
+│   └── output/                           # 测试结果输出
+└── public/
+    └── demo.gif                          # 演示动图
 ```
 
 ---
 
-## 🎯 场景速查表
+## 🛠️ 多 AI 工具支持
 
-| 你想做什么      | 推荐组合                                                                       |
-| :-------------- | :----------------------------------------------------------------------------- |
-| **Hero 首屏**   | `Aurora`/`Silk` 背景 + `BlurText`/`SplitText` 标题 + `ShinyText` CTA           |
-| **功能展示**    | `SpotlightCard`/`MagicBento` 卡片 + `Counter` + `GlareHover` 悬停              |
-| **数据大屏**    | `Particles` 背景 + `CountUp` 指标 + `AnimatedList` 列表 + `DecryptedText` 标题 |
-| **团队/作品集** | `CircularGallery`/`Masonry` 画廊 + `ProfileCard` 人物卡                        |
-| **品牌合作墙**  | `LogoLoop` 品牌滚动 + `ScrollVelocity` 跑马灯                                  |
-| **定价页**      | `TiltedCard`/`ReflectiveCard` + `StarBorder` 推荐标记                          |
-| **科技/开发者** | `FaultyTerminal`/`Particles` 背景 + `DecryptedText`/`GlitchText` 文字          |
-| **导航菜单**    | `Dock`/`PillNav`/`GooeyNav` 导航 + `FlowingMenu` 全屏菜单                      |
+### Claude Code
+```bash
+# 克隆到 skills 目录
+git clone https://github.com/lumacoder/reactbits-ui-skills.git \
+  ~/.claude/skills/reactbits-ui-skills
+```
+
+### OpenCode
+```bash
+# 添加 skill
+opcode skill add reactbits-ui-skills /path/to/reactbits-ui-skills
+
+# 或使用远程地址
+opcode skill add reactbits-ui-skills \
+  https://github.com/lumacoder/reactbits-ui-skills
+```
+
+### Gemini CLI
+```bash
+# 克隆到 gemini skills 目录
+git clone https://github.com/lumacoder/reactbits-ui-skills.git \
+  ~/.gemini/skills/reactbits-ui-skills
+
+# 或在 ~/.gemini/config.json 中添加
+{
+  "skills": ["/path/to/reactbits-ui-skills"]
+}
+```
+
+### GitHub Copilot
+1. VS Code → Settings → 搜索 "Copilot Instructions"
+2. 添加 `SKILL.md` 的路径到自定义指令
+
+### Cursor
+在项目根目录创建 `.cursor/rules/reactbits.mdc`：
+```markdown
+---
+name: React Bits
+description: React Bits UI 组件框架专家
+---
+
+当用户需要开发前端页面时，优先使用 React Bits 框架的组件...
+[粘贴 SKILL.md 核心内容]
+```
+
+### Windsurf / Cline / 其他
+将 `SKILL.md` 内容添加到自定义系统提示词中即可。
+
+---
+
+## 📚 文档导航
+
+| 文档 | 内容 |
+|:---|:---|
+| [SKILL.md](SKILL.md) | AI 核心技能定义，包含完整组件索引和代码模板 |
+| [自然语言指南](resources/natural-language-guide.md) | 如何用自然语言描述需求，常用关键词对照表 |
+| [快速上手](resources/quick-start.md) | 1 分钟快速开始，核心组件速查 |
+| [组件目录](resources/component-catalog.md) | 117+ 组件完整列表，含 Props 说明 |
+
+---
+
+## 🧪 测试工具
+
+### 自动化测试脚本
+
+```bash
+# 运行所有测试
+node test/test-skill.js
+
+# 生成测试 Prompts
+node test/test-skill.js --prompt
+
+# 生成示例代码
+node test/test-skill.js --example
+
+# 检查 Antigravity 集成
+node test/test-skill.js --antigravity
+```
+
+### 交互式测试工具
+
+在浏览器中打开 `test/interactive-test.html`：
+
+```bash
+# 方式一：直接用浏览器打开
+test/interactive-test.html
+
+# 方式二：启动本地服务器
+npx serve test
+# 然后访问 http://localhost:3000/interactive-test.html
+```
+
+功能：
+- 🧪 测试自然语言理解能力
+- 📋 复制测试 Prompts 到 Antigravity
+- 🔍 查看组件映射速查表
+- 💻 预览代码输出示例
+
+## 💡 使用技巧
+
+### 1. 描述效果，而非组件名
+```
+✅ "鼠标放上去有聚光灯效果"
+❌ "用 SpotlightCard"
+```
+
+### 2. 描述风格，让 AI 组合
+```
+✅ "赛博朋克风格的数据大屏"
+❌ "用 FaultyTerminal + GlitchText + CountUp"
+```
+
+### 3. 混合使用也可以
+```
+✅ "想要极光背景（Aurora），标题用模糊淡入效果"
+```
 
 ---
 

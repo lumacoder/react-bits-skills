@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Bits UI Skill - 交互式测试</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #888;
+      font-size: 1.1rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    /* 自然语言输入区 */
+    .input-section {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .input-section input {
+      flex: 1;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .input-section input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .input-section input::placeholder {
+      color: #666;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* 结果展示 */
+    .result {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 20px;
+      min-height: 100px;
+    }
+
+    .result-empty {
+      color: #666;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .component-match {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      background: rgba(102, 126, 234, 0.1);
+      border-left: 3px solid #667eea;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .component-match .keyword {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .component-match .arrow {
+      color: #667eea;
+    }
+
+    .component-match .component {
+      color: #fff;
+      font-weight: 600;
+      font-family: 'Courier New', monospace;
+      background: rgba(102, 126, 234, 0.2);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    /* 示例 Prompts */
+    .examples {
+      display: grid;
+      gap: 10px;
+    }
+
+    .example-item {
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .example-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(102, 126, 234, 0.5);
+      transform: translateX(5px);
+    }
+
+    .example-item .text {
+      color: #ccc;
+    }
+
+    .example-item .copy-hint {
+      color: #667eea;
+      font-size: 0.85rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .example-item:hover .copy-hint {
+      opacity: 1;
+    }
+
+    /* 代码展示 */
+    .code-block {
+      background: #1a1a2e;
+      border-radius: 10px;
+      padding: 20px;
+      overflow-x: auto;
+      margin-top: 15px;
+    }
+
+    .code-block pre {
+      color: #a6accd;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .code-block .keyword {
+      color: #c792ea;
+    }
+
+    .code-block .string {
+      color: #c3e88d;
+    }
+
+    .code-block .component {
+      color: #82aaff;
+    }
+
+    .code-block .prop {
+      color: #f78c6c;
+    }
+
+    /* 快捷标签 */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      background: rgba(102, 126, 234, 0.1);
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      border-radius: 20px;
+      color: #667eea;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tag:hover {
+      background: rgba(102, 126, 234, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* 测试结果统计 */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+    }
+
+    .stat-item .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #667eea;
+    }
+
+    .stat-item .label {
+      color: #888;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    /* 提示框 */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      padding: 15px 30px;
+      background: rgba(102, 126, 234, 0.9);
+      border-radius: 10px;
+      color: #fff;
+      font-weight: 500;
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* 分类展示 */
+    .category {
+      margin-bottom: 20px;
+    }
+
+    .category-title {
+      font-size: 0.9rem;
+      color: #667eea;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .category-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+
+    .category-item {
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .category-item .name {
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .category-item .desc {
+      color: #666;
+      font-size: 0.8rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #666;
+    }
+
+    footer a {
+      color: #667eea;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎨 React Bits UI Skill</h1>
+      <p>自然语言 → 组件匹配 交互式测试工具</p>
+    </header>
+
+    <!-- 自然语言测试 -->
+    <div class="card">
+      <h2>🧪 测试自然语言理解</h2>
+      <div class="input-section">
+        <input
+          type="text"
+          id="naturalInput"
+          placeholder="输入描述，例如：科技感落地页，极光背景，标题淡入动画..."
+          onkeypress="if(event.key==='Enter')analyzeInput()"
+        >
+        <button class="btn" onclick="analyzeInput()">分析</button>
+      </div>
+      <div class="tags">
+        <span class="tag" onclick="setInput('极光背景')">极光背景</span>
+        <span class="tag" onclick="setInput('文字模糊淡入')">文字模糊淡入</span>
+        <span class="tag" onclick="setInput('鼠标光效卡片')">鼠标光效卡片</span>
+        <span class="tag" onclick="setInput('数字滚动动画')">数字滚动动画</span>
+        <span class="tag" onclick="setInput('Mac Dock导航')">Mac Dock导航</span>
+      </div>
+      <div class="result" id="analysisResult">
+        <div class="result-empty">输入描述或点击标签查看组件匹配结果</div>
+      </div>
+    </div>
+
+    <!-- 常用示例 -->
+    <div class="card">
+      <h2>📋 快速测试 Prompts</h2>
+      <p style="color: #888; margin-bottom: 15px;">点击复制到 Antigravity 中测试</p>
+      <div class="examples">
+        <div class="example-item" onclick="copyPrompt(this)">
+          <span class="text">生成一个 SaaS 落地页，极光背景，标题淡入，聚光灯卡片</span>
+          <span class="copy-hint">点击复制</span>
+        </div>
+        <div class="example-item" onclick="copyPrompt(this)">
+          <span class="text">数据大屏，粒子背景，解密标题，数字滚动</span>
+          <span class="copy-hint">点击复制</span>
+        </div>
+        <div class="example-item" onclick="copyPrompt(this)">
+          <span class="text">赛博朋克风格个人主页，故障风文字，终端背景</span>
+          <span class="copy-hint">点击复制</span>
+        </div>
+        <div class="example-item" onclick="copyPrompt(this)">
+          <span class="text">作品集网站，丝绸背景，瀑布流画廊</span>
+          <span class="copy-hint">点击复制</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 组件映射速查 -->
+    <div class="card">
+      <h2>🔍 组件映射速查</h2>
+
+      <div class="category">
+        <div class="category-title">背景效果</div>
+        <div class="category-items">
+          <div class="category-item">
+            <div class="name">Aurora</div>
+            <div class="desc">极光渐变、流动色彩</div>
+          </div>
+          <div class="category-item">
+            <div class="name">Particles</div>
+            <div class="desc">粒子效果、星空背景</div>
+          </div>
+          <div class="category-item">
+            <div class="name">Silk</div>
+            <div class="desc">丝绸流动、优雅质感</div>
+          </div>
+          <div class="category-item">
+            <div class="name">FaultyTerminal</div>
+            <div class="desc">故障终端、赛博朋克</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">文字动画</div>
+        <div class="category-items">
+          <div class="category-item">
+            <div class="name">BlurText</div>
+            <div class="desc">模糊淡入、标题动画</div>
+          </div>
+          <div class="category-item">
+            <div class="name">SplitText</div>
+            <div class="desc">逐字显示、分裂动画</div>
+          </div>
+          <div class="category-item">
+            <div class="name">DecryptedText</div>
+            <div class="desc">解密效果、科技风</div>
+          </div>
+          <div class="category-item">
+            <div class="name">ShinyText</div>
+            <div class="desc">光泽扫过、CTA按钮</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">交互组件</div>
+        <div class="category-items">
+          <div class="category-item">
+            <div class="name">SpotlightCard</div>
+            <div class="desc">聚光灯、鼠标光效</div>
+          </div>
+          <div class="category-item">
+            <div class="name">CountUp</div>
+            <div class="desc">数字递增、统计动画</div>
+          </div>
+          <div class="category-item">
+            <div class="name">Dock</div>
+            <div class="desc">Mac风格导航</div>
+          </div>
+          <div class="category-item">
+            <div class="name">TiltedCard</div>
+            <div class="desc">3D倾斜、视差效果</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 统计信息 -->
+    <div class="card">
+      <h2>📊 Skill 能力统计</h2>
+      <div class="stats">
+        <div class="stat-item">
+          <div class="number">117+</div>
+          <div class="label">组件数量</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">4</div>
+          <div class="label">组件分类</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">50+</div>
+          <div class="label">自然语言关键词</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">6</div>
+          <div class="label">支持 AI 工具</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 代码示例 -->
+    <div class="card">
+      <h2>💻 预期代码输出示例</h2>
+      <p style="color: #888; margin-bottom: 15px">输入: "极光背景的 Hero 组件"</p>
+      <div class="code-block">
+        <pre><span class="keyword">import</span> { Aurora } <span class="keyword">from</span> <span class="string">"./components/Aurora"</span>;
+<span class="keyword">import</span> { BlurText } <span class="keyword">from</span> <span class="string">"./components/BlurText"</span>;
+
+<span class="keyword">export default function</span> <span class="component">HeroSection</span>() {
+  <span class="keyword">return</span> (
+    <span class="component">&lt;section</span> <span class="prop">className</span>=<span class="string">"relative min-h-screen"</span><span class="component">&gt;</span>
+      <span class="component">&lt;Aurora</span>
+        <span class="prop">colorStops</span>={[<span class="string">"#3A29FF"</span>, <span class="string">"#FF94B4"</span>, <span class="string">"#FF3232"</span>]}
+        <span class="prop">speed</span>={<span class="string">0.5</span>}
+      <span class="component">/&gt;</span>
+      <span class="component">&lt;BlurText</span>
+        <span class="prop">text</span>=<span class="string">"Welcome"</span>
+        <span class="prop">className</span>=<span class="string">"text-6xl font-bold text-white"</span>
+      <span class="component">/&gt;</span>
+    <span class="component">&lt;/section&gt;</span>
+  );
+}</pre>
+      </div>
+    </div>
+
+    <footer>
+      <p>React Bits UI Skill | <a href="https://reactbits.dev" target="_blank">官方文档</a></p>
+      <p style="margin-top: 10px; font-size: 0.9rem;">在 Antigravity 中测试: 将上述 Prompts 复制到对话中使用</p>
+    </footer>
+  </div>
+
+  <!-- Toast 提示 -->
+  <div class="toast" id="toast">已复制到剪贴板</div>
+
+  <script>
+    // 组件映射数据库
+    const componentMapping = {
+      // 背景
+      '极光': { component: 'Aurora', category: '背景' },
+      '渐变': { component: 'Aurora', category: '背景' },
+      '粒子': { component: 'Particles', category: '背景' },
+      '星空': { component: 'Particles', category: '背景' },
+      '丝绸': { component: 'Silk', category: '背景' },
+      '终端': { component: 'FaultyTerminal', category: '背景' },
+      '故障': { component: 'FaultyTerminal', category: '背景' },
+      '赛博': { component: 'FaultyTerminal', category: '背景' },
+      '网格': { component: 'DotGrid', category: '背景' },
+      '光束': { component: 'Beams', category: '背景' },
+
+      // 文字
+      '模糊': { component: 'BlurText', category: '文字动画' },
+      '淡入': { component: 'BlurText', category: '文字动画' },
+      '逐字': { component: 'SplitText', category: '文字动画' },
+      '解密': { component: 'DecryptedText', category: '文字动画' },
+      '光泽': { component: 'ShinyText', category: '文字动画' },
+      '发光': { component: 'ShinyText', category: '文字动画' },
+      '故障风': { component: 'GlitchText', category: '文字动画' },
+      '打字机': { component: 'TextType', category: '文字动画' },
+      '渐变字': { component: 'GradientText', category: '文字动画' },
+      '滚动浮现': { component: 'ScrollFloat', category: '文字动画' },
+
+      // 交互
+      '光效': { component: 'SpotlightCard', category: '交互组件' },
+      '聚光灯': { component: 'SpotlightCard', category: '交互组件' },
+      '鼠标光': { component: 'SpotlightCard', category: '交互组件' },
+      '数字': { component: 'CountUp', category: '交互组件' },
+      '滚动': { component: 'CountUp', category: '交互组件' },
+      '递增': { component: 'CountUp', category: '交互组件' },
+      'Dock': { component: 'Dock', category: '交互组件' },
+      '导航': { component: 'Dock', category: '交互组件' },
+      'Mac': { component: 'Dock', category: '交互组件' },
+      '3D': { component: 'TiltedCard', category: '交互组件' },
+      '倾斜': { component: 'TiltedCard', category: '交互组件' },
+      '玻璃': { component: 'GlassSurface', category: '交互组件' },
+      '眩光': { component: 'GlareHover', category: '交互组件' },
+
+      // 画廊
+      '瀑布': { component: 'Masonry', category: '画廊' },
+      '画廊': { component: 'CircularGallery', category: '画廊' },
+      '轮播': { component: 'Carousel', category: '画廊' },
+      '环形': { component: 'CircularGallery', category: '画廊' },
+    };
+
+    function analyzeInput() {
+      const input = document.getElementById('naturalInput').value;
+      const resultDiv = document.getElementById('analysisResult');
+
+      if (!input.trim()) {
+        resultDiv.innerHTML = '<div class="result-empty">请输入描述内容</div>';
+        return;
+      }
+
+      const matches = [];
+      for (const [keyword, data] of Object.entries(componentMapping)) {
+        if (input.includes(keyword)) {
+          matches.push({ keyword, ...data });
+        }
+      }
+
+      if (matches.length === 0) {
+        resultDiv.innerHTML = `
+          <div class="result-empty">
+            <p>未识别到明确的关键词</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+              尝试使用: 极光、粒子、模糊、解密、光效、数字、Dock、瀑布 等关键词
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      resultDiv.innerHTML = matches.map(m => `
+        <div class="component-match">
+          <span class="keyword">"${m.keyword}"</span>
+          <span class="arrow">→</span>
+          <span class="component">${m.component}</span>
+          <span style="color: #666; margin-left: auto; font-size: 0.85rem;">${m.category}</span>
+        </div>
+      `).join('');
+    }
+
+    function setInput(text) {
+      document.getElementById('naturalInput').value = text;
+      analyzeInput();
+    }
+
+    function copyPrompt(element) {
+      const text = element.querySelector('.text').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('已复制到剪贴板');
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
