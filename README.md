@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://reactbits.dev/favicon.ico" alt="React Bits Logo" width="80" />
+  <img src="public/logo.png" alt="React Bits Logo" width="80" />
 </p>
 
 <h1 align="center">🎨 React Bits Skills</h1>
