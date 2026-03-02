@@ -183,5 +183,5 @@ MIT © [LumaCoder](https://github.com/lumacoder)
 
 <p align="center">
   <strong>🌟 如果这个项目帮到了你，请给一个 Star！</strong><br/>
-  <sub>让前端工程师不再焦虑 AI 生成的"丑页面" 🎉</sub>
+  <sub>让前端工程师不再焦虑 AI 没有审美，生成的"丑页面" 🎉</sub>
 </p>
